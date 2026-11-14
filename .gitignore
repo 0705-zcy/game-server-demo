@@ -1,0 +1,4 @@
+# 运行时生成的存档与临时文件，不进版本库
+players.json
+.players-*.tmp
+*.exe
