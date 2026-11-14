@@ -1,12 +1,17 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-set "GO=C:\Users\Samanda\GoToolchain\go\bin\go.exe"
+where go >nul 2>nul
+if errorlevel 1 (
+  echo [提示] 未找到 go 命令。请先把 Go 安装目录下的 bin 加入 PATH，再双击本脚本。
+  pause
+  exit /b 1
+)
 if exist bot.exe goto run
 echo [首次运行] 正在编译压测客户端...
-"%GO%" build -o bot.exe ./cmd/bot
+go build -o bot.exe ./cmd/bot
 if not exist bot.exe (
-  echo 编译失败，把报错截图发豆包。
+  echo 编译失败，请保留窗口中的报错信息以便排查。
   pause
   exit /b 1
 )
