@@ -59,7 +59,7 @@ def main():
 
     log("=" * 78)
     log("game-server-demo 存档层 SQL 最小闭环（SQLite）")
-    log("库文件        : " + DB_PATH)
+    log("库文件        : " + os.path.relpath(DB_PATH, os.path.dirname(HERE)).replace(os.sep, "/"))
     log("SQLite 版本   : " + sqlite3.sqlite_version)
     log("=" * 78)
     log()
@@ -227,7 +227,7 @@ def main():
         pass
     print(text)
     print()
-    print("输出已写入: " + OUT_PATH)
+    print("输出已写入: " + os.path.relpath(OUT_PATH, os.path.dirname(HERE)).replace(os.sep, "/"))
 
 
 if __name__ == "__main__":
